@@ -1,4 +1,4 @@
-name: Build and Deploy whitepaper to k8s
+name: Build and Deploy whitepaper gear exe to k8s
 
 on:
   push:
@@ -57,7 +57,7 @@ jobs:
       - name: Deploy to k8s
         uses: sergeyfilyanin/kubectl-aws-eks@master
         with:
-          args: rollout restart deployment whitepaper -n $KUBE_NAMESPACE
+          args: rollout restart deployment whitepaper-gear-exe -n $KUBE_NAMESPACE
 
   check-k8s-deployments:
     needs: deploy-to-k8s
