@@ -12,7 +12,7 @@ const config: Config = {
   url: "https://gear-tech.io",
 
   // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: "/gear-exe/whitepaper",
+  baseUrl: "/gear-exe/whitepaper/",
 
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "log",
