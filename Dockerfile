@@ -15,7 +15,7 @@ FROM base AS prod
 WORKDIR /opt/docusaurus
 COPY . /opt/docusaurus/
 RUN npm install
-RUN npm run build -- --base-url="/gear-exe/whitepaper/" 
+RUN npm run build
 
 # Stage 3: Serve with Docusaurus
 FROM prod AS serve
