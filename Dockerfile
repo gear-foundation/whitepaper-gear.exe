@@ -14,7 +14,7 @@ CMD [ -d "node_modules" ] && npm run start -- --host 0.0.0.0 --poll 1000 || npm 
 FROM base AS prod
 WORKDIR /opt/docusaurus
 COPY . /opt/docusaurus/
-RUN npm ci
+RUN npm install
 RUN npm run build -- --base-url="/gear-exe/whitepaper/" 
 
 # Stage 3: Serve with Docusaurus
