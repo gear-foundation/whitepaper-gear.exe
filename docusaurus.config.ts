@@ -47,7 +47,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: "/img/wp-preview.jpg",
+    image: "/img/opengraph-image.jpeg",
     colorMode: {
       defaultMode: "dark",
       disableSwitch: true,
