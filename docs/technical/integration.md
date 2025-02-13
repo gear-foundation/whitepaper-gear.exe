@@ -1,6 +1,7 @@
 ---
 title: Ethereum dApps Integration
 sidebar_position: 2
+description: ''
 ---
 
 # Integration of Ethereum dApps with Gear.exe

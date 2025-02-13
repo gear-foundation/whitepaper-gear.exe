@@ -1,6 +1,7 @@
 ---
 title: Gear.exe
 sidebar_position: 3
+description: ''
 ---
 
 # Gear.exe: Revolutionizing Ethereum
