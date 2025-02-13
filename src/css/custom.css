@@ -227,9 +227,7 @@ aside.theme-doc-sidebar-container {
 }
 
 .menu__link {
-  font-size: var(--text-sm);
-  /*font-size: 15px;*/
-  /*font-size: var(--text-base);*/
+  font-size: var(--text-base);
   line-height: 1.5;
   font-weight: 400;
   margin-right: 0.5rem;
@@ -258,7 +256,7 @@ aside.theme-doc-sidebar-container {
 }
 
 .table-of-contents {
-  font-size: var(--text-xs);
+  font-size: 0.8125rem;
 }
 
 nav.theme-doc-breadcrumbs {
