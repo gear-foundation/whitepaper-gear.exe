@@ -48,6 +48,17 @@ const config: Config = {
 
   themeConfig: {
     image: "/img/opengraph-image.jpeg",
+    metadata: [
+      {
+        name: "keywords",
+        content: "Gear, Gear.exe, GearProtocol, web3, Gear.exe whitepaper",
+      },
+      {
+        name: "description",
+        content:
+          "Vision of Decentralized Bridgeless Computing Extension to Ethereum Network",
+      },
+    ],
     colorMode: {
       defaultMode: "dark",
       disableSwitch: true,
