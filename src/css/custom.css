@@ -92,7 +92,7 @@ h6 {
 }
 
 .markdown {
-  font-size: var(--text-xs);
+  font-size: var(--text-sm);
   line-height: 1.5;
 }
 
@@ -105,13 +105,19 @@ h6 {
   font-weight: 400;
 }
 
+.footer {
+  padding: 3rem 0;
+  background: hsla(0, 0%, 100%, 0.04);
+  text-transform: uppercase;
+  margin-top: 3rem;
+}
+
 .footer--dark {
   --ifm-footer-background-color: var(--ifm-background-color);
   --ifm-footer-link-color: var(--foreground);
 }
 
 .footer__links {
-  text-transform: uppercase;
   font-size: var(--text-xs);
 }
 
@@ -129,7 +135,7 @@ h6 {
 }
 
 .footer__link-item {
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
   gap: 0.375rem;
   width: 100%;
@@ -140,6 +146,46 @@ h6 {
 .footer__copyright {
   text-align: left;
   font-size: var(--text-xs);
+  color: hsla(0, 0%, 100%, 0.5);
+}
+
+.footer__col--social-mobile {
+  display: none;
+}
+
+@media (max-width: 996px) {
+  .footer__socials {
+    display: none;
+  }
+
+  .footer__items {
+    border: none;
+  }
+
+  .footer__links {
+    margin-bottom: 4rem;
+  }
+
+  .footer__links * {
+    margin: 0;
+  }
+
+  .footer__col {
+    margin-bottom: 0;
+  }
+
+  .footer__col:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  .footer__title--socials-mobile {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+  }
+
+  .footer__col--social-mobile {
+    display: block;
+  }
 }
 
 .markdown h1:first-child {
@@ -182,7 +228,15 @@ aside.theme-doc-sidebar-container {
 
 .menu__link {
   font-size: var(--text-sm);
+  /*font-size: 15px;*/
+  /*font-size: var(--text-base);*/
   line-height: 1.5;
+  font-weight: 400;
+  margin-right: 0.5rem;
+}
+
+.navbar {
+  text-transform: uppercase;
 }
 
 @media screen and (min-width: 996px) {
@@ -196,14 +250,11 @@ aside.theme-doc-sidebar-container {
 .navbar__link {
   font-size: var(--text-xs);
   line-height: 1.5;
-  text-transform: uppercase;
 }
 
-.footer__link-item svg,
+.footer__link-item svg:not(.social),
 .navbar__link svg {
-  width: 12px;
-  height: 12px;
-  margin-left: 0;
+  display: none;
 }
 
 .table-of-contents {
@@ -224,7 +275,6 @@ nav.theme-doc-breadcrumbs {
 
 .navbar__title {
   font-size: var(--text-xs);
-  text-transform: uppercase;
 }
 
 .navbar-sidebar__backdrop {
@@ -248,4 +298,8 @@ nav.theme-doc-breadcrumbs {
 
 .theme-doc-toc-mobile .table-of-contents__link {
   font-size: var(--text-sm);
+}
+
+.main-wrapper .padding-bottom--lg {
+  padding-bottom: 0 !important;
 }

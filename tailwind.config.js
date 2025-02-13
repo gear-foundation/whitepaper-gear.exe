@@ -1,5 +1,5 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
-const plugin = require("tailwindcss/plugin");
+const defaultTheme = require("tailwindcss/defaultTheme")
+const plugin = require("tailwindcss/plugin")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -15,6 +15,20 @@ module.exports = {
         "brand-400": "rgb(var(--brand-400) / <alpha-value>)",
         "brand-500": "rgb(var(--brand-500) / <alpha-value>)",
         "brand-600": "rgb(var(--brand-600) / <alpha-value>)",
+      },
+      keyframes: {
+        slideDown: {
+          from: { height: "0px" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        slideUp: {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0px" },
+        },
+      },
+      animation: {
+        slideDown: "slideDown 350ms ease-out",
+        slideUp: "slideUp 350ms ease-out",
       },
       fontSize: {
         xs: ["12px", "1.5"],
@@ -96,9 +110,9 @@ module.exports = {
   },
   plugins: [
     plugin(function ({ addVariant }) {
-      addVariant("hocus", ["&:hover", "&:focus-visible"]);
-      addVariant("group-hocus", ":merge(.group):hocus &");
-      addVariant("peer-hocus", ":merge(.peer):hocus ~ &");
+      addVariant("hocus", ["&:hover", "&:focus-visible"])
+      addVariant("group-hocus", ":merge(.group):hocus &")
+      addVariant("peer-hocus", ":merge(.peer):hocus ~ &")
     }),
   ],
   darkMode: ["class", '[data-theme="dark"]'],
@@ -106,4 +120,4 @@ module.exports = {
     preflight: false,
   },
   blocklist: ["container"],
-};
+}
