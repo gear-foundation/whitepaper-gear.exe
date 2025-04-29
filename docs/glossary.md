@@ -1,7 +1,6 @@
 ---
 title: Glossary
 sidebar_position: 9
-description: ''
 ---
 
 ### Actor Model
@@ -88,7 +87,7 @@ An approach where developers cover transaction fees for end users, enabling dApp
 This model is supported by Gear.exe, allowing dApp developers to adopt monetization strategies similar to those used in
 Web2 applications.
 
-<img src="/gear-exe/whitepaper/img/reverse-gas.png" alt="Reverse gas"/>
+![Reverse gas](/img/reverse-gas.png)
 
 ### Router Contract
 

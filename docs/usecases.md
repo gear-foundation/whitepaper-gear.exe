@@ -1,7 +1,6 @@
 ---
 title: Use Cases and Target Audience
 sidebar_position: 6
-description: ''
 ---
 
 The versatility of Gear.exe makes it ideal for a wide range of applications across various industries. Its computational

@@ -1,7 +1,6 @@
 ---
 title: Future Improvements
 sidebar_position: 7
-description: ''
 ---
 
 One of the most anticipated advancements of Gear.exe’s development is the integration of multi-network support. While

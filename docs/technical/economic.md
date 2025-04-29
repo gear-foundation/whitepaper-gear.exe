@@ -1,7 +1,6 @@
 ---
 title: Economic Model
 sidebar_position: 4
-description: ''
 ---
 
 Gear.exe’s economic model is built to support scalable, efficient, and sustainable decentralized applications (dApps).

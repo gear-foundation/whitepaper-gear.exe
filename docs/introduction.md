@@ -1,7 +1,6 @@
 ---
 title: Introduction
 sidebar_position: 2
-description: ''
 ---
 
 ## Overview of Gear.exe

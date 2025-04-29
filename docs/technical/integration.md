@@ -1,7 +1,6 @@
 ---
 title: Ethereum dApps Integration
 sidebar_position: 2
-description: ''
 ---
 
 # Integration of Ethereum dApps with Gear.exe
@@ -25,7 +24,7 @@ that require immediate results, as it leverages Gear.exe's pre-confirmation mech
 Both integration methods are designed to be developer-friendly and scalable, ensuring that dApps can seamlessly
 incorporate Gear.exe's computational power without compromising security or performance.
 
-<img src="/gear-exe/whitepaper/img/integration.png"  alt="Integration"/>
+![Integration](/img/integration.png)
 _This diagram illustrates native integration of an Ethereum-based dApp with Gear.exe_
 
 ## Brief Workflow for dApp Developers
