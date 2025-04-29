@@ -1,7 +1,6 @@
 ---
 title: Security and Executor Selection
 sidebar_position: 3
-description: ''
 ---
 
 Regardless of the integration approach, Executors are critical to Gear.exe’s operation. Their selection and management

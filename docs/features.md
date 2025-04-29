@@ -1,7 +1,6 @@
 ---
 title: Key Features and Advantages
 sidebar_position: 4
-description: ''
 ---
 
 # Key Features and Advantages
@@ -47,7 +46,7 @@ resource-intensive tasks to its network, it also introduces a Reverse Gas model,
 users to the program itself. This approach ensures a seamless and accessible user experience, enabling broader adoption
 of decentralized applications (dApps).
 
-<img src="/gear-exe/whitepaper/img/reverse-gas.png"  alt="Reverse gas"/>
+![Reverse ga](/img/reverse-gas.png)
 _Gas Fees and Reverse Gas Model_
 
 In Gear.exe, programs maintain two types of balances:

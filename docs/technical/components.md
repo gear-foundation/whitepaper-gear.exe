@@ -1,7 +1,6 @@
 ---
 title: Core Components
 sidebar_position: 1
-description: ''
 ---
 
 Gear.exe redefines decentralized computation by operating as a P2P compute network rather than a standalone blockchain.

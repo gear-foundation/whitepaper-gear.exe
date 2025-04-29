@@ -77,6 +77,13 @@ const config: Config = {
       },
       items: [
         {
+          href: "/Gear.exe-Whitepaper-0.1.pdf",
+          label: "[PDF Version]",
+          position: "left",
+          target: "_blank",
+          rel: "noopener noreferrer",
+        },
+        {
           href: "https://gear-tech.io",
           label: "[Gear Technologies]",
           position: "right",

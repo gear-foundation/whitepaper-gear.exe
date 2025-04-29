@@ -1,7 +1,6 @@
 ---
 title: Summary
 sidebar_position: 8
-description: ''
 ---
 
 Gear.exe represents a paradigm shift in decentralized computation. By addressing Ethereum’s scalability and cost

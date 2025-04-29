@@ -1,7 +1,6 @@
 ---
 title: Gear.exe
 sidebar_position: 3
-description: ''
 ---
 
 # Gear.exe: Revolutionizing Ethereum
@@ -21,7 +20,7 @@ minutes, intensify the problem. While transactions in a block are usable after o
 requiring high security typically wait for finalization to ensure immutability. High gas fees (i.e expensive
 computations) further deter adoption, particularly for applications that require frequent or intensive computations.
 
-<img src="/gear-exe/whitepaper/img/eth-net.jpg"  alt="Ethereum network"/>
+![Ethereum network](/img/eth-net.jpg)
 _Ethereum Layer-1 Network: Basic Workflow_
 
 Layer-2 solutions such as Optimistic Rollups, ZK Rollups, and Based Rollups have attempted to address these issues by
@@ -39,7 +38,7 @@ operations, large circuit sizes, and the need for rigorous guarantees of correct
 
 Both approaches often operate in isolated environments, fragmenting liquidity and complicating interoperability.
 
-<img src="/gear-exe/whitepaper/img/eth-rollups.jpg"  alt="Ethereum rollups"/>
+![Ethereum rollups](/img/eth-rollups.jpg)
 _Interaction of L2 Networks with Ethereum L1: Basic Workflow_
 
 In 2023, Based rollups were proposed as an alternative, leveraging Ethereum’s Layer-1 protocols for sequencing and
