@@ -32,12 +32,10 @@ _This diagram illustrates native integration of an Ethereum-based dApp with Gear
 1. **Define the Computationally Intensive Part.** Identify the resource-heavy segment of your dApp's business logic and
    rewrite it in Rust using Gear Protocol's Sails library. Compile the program into a Wasm module and generate an IDL (
    Interface Definition Language) file to describe its interface.
-2. **Upload Your Wasm and IDL Files to Ethereum.** Publish your Wasm code and IDL file to the Ethereum network as part
-   of a transaction. The code is stored as a blob, a data format accessible via Ethereum's archive nodes but stored
-   outside the main state. This step prepares your program for integration with the Gear.exe network.
+2. **Upload Your Wasm to Ethereum.** Publish your Wasm code as part of a special blob-carrying transaction (EIP-4844). The blob is   stored outside Ethereum’s main state, but remains accessible via archive nodes. The blob serves as the canonical source of your program’s code for Gear.exe initialization.
 3. **Initialize Your Program in Gear.exe.** With a single action, activate your Wasm program on Gear.exe. This
    initialization process uploads the code to Gear.exe, establishes the program's initial state, and automatically
-   deploys a corresponding Mirror Contract on Ethereum. The Mirror Contract serves as an interface, representing your
+   deploys a corresponding Mirror Contract on Ethereum. The Mirror Contract serves as the ABI-compatible interface, representing your
    dApp within the Ethereum ecosystem and facilitating seamless interaction between the two environments.
 4. **Leverage Lightning-Fast Computation.** Interact with your program by submitting messages through Ethereum, paying
    only the transaction fee for message submission. Alternatively, use the RPC interface to access your dApp's

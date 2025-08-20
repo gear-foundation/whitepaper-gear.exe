@@ -92,4 +92,4 @@ In practice, Middleware coordinates the flow of value and responsibility:
 - **Slashing and Discipline**: enforcing penalties for misbehavior or downtime, preserving the integrity of execution.  
 
 By combining these roles, Middleware acts as the economic backbone of Gear.exe — making sure that every off-chain  
-computation is not only technically correct but also economically secured and accountable.  
+computation is not only technically correct but also economically secured and accountable.
