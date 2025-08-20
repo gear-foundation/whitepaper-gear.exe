@@ -32,11 +32,6 @@ conform to Layer-1 rules.
 A large binary object stored on the Ethereum network as part of a transaction. In Gear.exe, Wasm code is uploaded as a
 blob, which resides outside Ethereum’s main state but is accessible via archive nodes.
 
-### Decoder Contract
-
-An optional smart contract that translates data between Gear.exe and Ethereum. It encodes input data for Gear programs
-and decodes their output into formats readable by Ethereum tools like Etherscan.
-
 ### dApp (Decentralized Application)
 
 A software application that runs on a blockchain or decentralized network. dApps are powered by smart contracts and
@@ -46,6 +41,10 @@ provide users with transparent and trustless interactions without relying on cen
 
 A decentralized node within the Gear.exe network responsible for executing Wasm programs. Executors retrieve programs,
 perform computations, and generate signed results, ensuring the network’s reliability and scalability.
+
+### Executable Balance
+
+A dedicated balance maintained by a Gear program to cover execution costs. Each time the program processes a message, a portion of this balance is consumed and later distributed to Executors and stakers. If the Executable Balance reaches zero, the program becomes inactive until replenished.
 
 ### Finality
 
@@ -68,6 +67,14 @@ programs interact with external systems or smart contracts.
 A smart contract deployed on Ethereum to act as an interface for a Gear program. Mirror Contracts enable communication
 between the Ethereum blockchain and off-chain computations performed on Gear.exe.
 
+### Mirror ABI Interface
+
+The ABI (Application Binary Interface) exposed by Mirror Contracts on Ethereum. This interface allows Ethereum tools and dApps (e.g., MetaMask, Etherscan) to interact with Gear programs natively, without the need for additional encoding/decoding, by treating them as standard Ethereum smart contracts. Mirror ABI Interfaces act as a transparent proxy layer for Gear programs.
+
+### Middleware
+
+A specialized contract that links the Router Contract with the Symbiotic Protocol. It manages responsibilities such as key registration, updates, and validator/operator accountability, including slashing requests. Middleware ensures secure coordination between execution results and staking economics.
+
 ### Optimistic Rollups
 
 A type of Layer-2 scaling solution that processes transactions off-chain and periodically posts summarized data (state
@@ -75,6 +82,10 @@ roots) back to the Ethereum mainnet. Optimistic Rollups operate under the assump
 “optimistically”) unless proven otherwise. To ensure security, they include a challenge period during which anyone can
 submit fraud proofs to contest invalid transactions. This mechanism provides scalability but introduces delays in
 transaction finality due to the need for a dispute resolution window.
+
+### Operator
+
+An entity responsible for running Executor nodes within the Gear.exe network. Operators are elected through the Symbiotic Protocol based on delegated stake and are accountable for reliable execution. They represent the economic and operational counterpart to Executors.
 
 ### Pre-confirmation Mechanism
 
@@ -93,11 +104,6 @@ Web2 applications.
 
 The central smart contract in Gear.exe’s architecture that coordinates interactions between Ethereum and the Gear.exe
 network. It handles program uploads, execution results, and state transitions.
-
-### Sequencer
-
-A component in Gear.exe that aggregates execution results from multiple Executors and submits them to Ethereum as a
-single batch. The Sequencer ensures efficient synchronization between off-chain computations and on-chain state updates.
 
 ### Shared Storage
 
