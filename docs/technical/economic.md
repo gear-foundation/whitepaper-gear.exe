@@ -38,13 +38,12 @@ Programs in Gear.exe maintain their Executable Balance through multiple methods:
 
 ### Executor Rewards
 
-When a program executes, the consumed portion of its Executable Balance is locked in the Router Contract. These funds
-are later distributed to Executors, incentivizing them to process computations and maintain the network’s reliability.
+When a program executes, the consumed portion of its Executable Balance is deducted and recorded in the Router Contract. These funds are later distributed to Executors and proportionally shared with stakers who delegated collateral, incentivizing reliable computation and maintaining network security.
 
 ### Transparency and Tracking
 
 Developers and users can query the current Executable Balance of a program via RPC calls using the program’s state hash.
-Mirror Contracts on Ethereum expose this state hash, allowing anyone to verify a program’s resource usage.
+Mirror Contracts publish the program’s state commitment, which can be queried to verify balances and execution costs».
 
 ## Economic Patterns
 
