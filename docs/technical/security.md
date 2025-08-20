@@ -16,16 +16,16 @@ and decentralized Executor selection mechanism tailored specifically to Gear.exe
 
 Gear.exe configures the operator set, establishing parameters such as staking limits and the maximum allowable stake for
 individual operators. Operators, who run Executor nodes, are elected based on their ability to attract stakers who
-delegate collateral (e.g., ERC-20 wrapped VARA tokens) to them. This delegated stake determines their eligibility to
-serve as active Executors. The list of active Executors is continuously updated and pushed to the Router Contract, which
-governs Gear.exe’s decentralized compute infrastructure.
+delegate collateral (**e.g., ERC-20 representations of VARA or other supported assets**) to them. This delegated stake
+determines their eligibility to serve as active Executors.Once elected, operators participate in program execution and sign results collectively, which are then finalized by the Router Contract.
+The list of active Executors is continuously updated and pushed to the Router Contract, which governs Gear.exe’s decentralized compute infrastructure.
+
 Key elements of the selection process include:
 
 1. Stake Allocation: Gear.exe establishes operator sets, defines staking requirements, and locks stake amounts for
    predefined epochs to maintain network stability.
 2. Symbiotic Vault Integration: Vaults manage the staking process, allocate collateral to operators, and enforce
    strategies specific to Gear.exe’s execution needs.
-
 ## Key Actors in Gear.exe Executor Selection
 
 - **Gear.exe Network:** Defines the decentralized infrastructure required to execute programs, configures operator sets,
@@ -54,9 +54,9 @@ sustainability.
 ## Slashing and Misbehavior
 
 Symbiotic incorporates a robust slashing mechanism to deter malicious behavior. If an Executor produces inaccurate
-results or engages in misconduct, the Gear.exe network can initiate a slashing request to Symbiotic. Symbiotic’s *
-*Slasher module** validates these requests and enforces penalties by reducing the stake of the offending operator. This
-ensures economic accountability and strengthens the overall integrity of the network.
+results or engages in misconduct, a special Middleware contract can initiate a slashing request to Symbiotic. Symbiotic’s
+**Slasher module** validates these requests and enforces penalties by reducing the stake of the offending operator or
+validator. This ensures economic accountability and strengthens the overall integrity of the network.
 
 ## Attracting Executors
 
