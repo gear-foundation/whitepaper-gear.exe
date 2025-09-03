@@ -15,7 +15,7 @@ Gear.exe network is fully integrated with Ethereum and operates directly with na
 compatibility ensures that developers can adopt Gear.exe without needing additional tokens, interfaces, or complex
 configurations. Users and developers can keep using Ethereum’s existing tools and infrastructure they are familiar with
 for developing and interacting with Solidity-based smart contracts, including MetaMask, Etherscan, popular developer
-frameworks, environments, debugging tools, IDEs (Thirdweb, Tenderly, The Graph etc). Interaction with Gear.exe programs does not require custom ABI encoding/decoding — thanks to Sails, developers can call programs directly using familiar Ethereum tools.
+frameworks, environments, debugging tools, IDEs (Thirdweb, Tenderly, The Graph etc). Interaction with Gear.exe programs does not require custom ABI encoding/decoding — thanks to [Sails](https://github.com/gear-tech/sails), developers can call programs directly using familiar Ethereum tools.
 
 ## Parallel Execution
 
