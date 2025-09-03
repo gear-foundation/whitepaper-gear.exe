@@ -15,7 +15,7 @@ Gear.exe network is fully integrated with Ethereum and operates directly with na
 compatibility ensures that developers can adopt Gear.exe without needing additional tokens, interfaces, or complex
 configurations. Users and developers can keep using Ethereum’s existing tools and infrastructure they are familiar with
 for developing and interacting with Solidity-based smart contracts, including MetaMask, Etherscan, popular developer
-frameworks, environments, debugging tools, IDEs (Thirdweb, Tenderly, The Graph etc).
+frameworks, environments, debugging tools, IDEs (Thirdweb, Tenderly, The Graph etc). Interaction with Gear.exe programs does not require custom ABI encoding/decoding — thanks to [Sails](https://github.com/gear-tech/sails), developers can call programs directly using familiar Ethereum tools.
 
 ## Parallel Execution
 
@@ -25,19 +25,15 @@ enabling faster processing for applications like AI models, financial simulation
 optimizing workloads for parallel execution, Gear.exe significantly boosts throughput and reduces bottlenecks, ensuring
 that even the most demanding applications can operate seamlessly.
 
-A dApp developer can offload the heavy logic of their application to a separate program on Gear.exe and, if the program
-logic supports it, further parallelize these computations across multiple threads by running them on several programs
-simultaneously.
+Programs are inherently isolated and can run in parallel across executors. Additionally, developers can design their logic to further distribute workloads across multiple programs, enabling natural horizontal scaling.
 
 ## Advanced Programming Environment
 
 Gear.exe provides developers with a cutting-edge programming environment by combining the power of WebAssembly (Wasm)
 with the flexibility of Rust, a widely adopted and developer-friendly language. Wasm programs on Gear.exe enable
 high-performance, lightweight execution, while Rust’s rich ecosystem and safety features make it easier to write, test,
-and maintain complex applications. Additionally, Gear.exe supports up to 2GB of memory per program, significantly
-exceeding the constraints of Ethereum and Layer-2 rollups. This combination empowers developers to create larger, more
-sophisticated applications, such as financial simulations, AI models, and real-time gaming systems, without being
-hindered by traditional blockchain limitations.
+and maintain complex applications. Additionally, Gear.exe supports up to 2GB of memory per program (current limit), significantly exceeding Ethereum’s gas-constrained execution where effective memory rarely exceeds a few MB. 
+This combination empowers developers to create larger, more sophisticated applications, such as financial simulations, AI models, and real-time gaming systems, without being hindered by traditional blockchain limitations.
 
 ## Reverse Gas Model and Flexible Gas Management
 
@@ -56,8 +52,8 @@ In Gear.exe, programs maintain two types of balances:
 - Free Balance: Acts as a general-purpose wallet for funds earned by the program, which can be withdrawn or converted
   into Executable Balance if supported by the program logic.
 
-This model allows anyone to send messages to a program without incurring additional computational costs beyond the
-standard Ethereum transaction fee. The Executable Balance is consumed during execution, while funds are distributed to
+This model allows anyone to send messages without incurring extra compute costs beyond the base Ethereum transaction fee.
+The Executable Balance is consumed during execution, while funds are distributed to
 the network’s Executors as rewards. Developers can design applications that fund their Executable Balance through
 revenue models like user payments, fees, or even sponsorships.
 
@@ -71,13 +67,17 @@ For latency-sensitive applications, Gear.exe introduces its own technical implem
 a [well-known](https://ethresear.ch/t/based-preconfirmations/17353) [pre-confirmation mechanism](/docs/glossary.md#pre-confirmation-mechanism).
 This feature allows developers to access computation results immediately after execution, even before the transaction is
 finalized on-chain. By bridging the gap between decentralized security and Web2-like responsiveness, this capability
-enables the development of cutting-edge applications in finance, competitive gaming, and other industries.
+enables the development of cutting-edge applications in finance, competitive gaming, and other industries. Pre-confirmations provide early results for UX, while canonical finality still follows Ethereum’s finality rules.
 
 ## No Own Blocks
 
 Unlike traditional Layer 2 solutions such as Arbitrum and Optimism, which generate and store their own blocks, Gear.exe
 does not create blocks. Instead, it processes transactions and program state changes directly within its network,
-leveraging its decentralized compute architecture. By avoiding block creation, Gear.exe eliminates the overhead
+leveraging its decentralized compute architecture. Rather than producing blocks, Gear.exe checkpoints batched program state changes to Ethereum, ensuring security while avoiding L2-style block overhead.
+By avoiding block creation, Gear.exe eliminates the overhead
 associated with block production and consensus mechanisms, reduces latency, and enables real-time computation. This
 design enhances scalability and allows for more efficient resource utilization, making it ideal for applications
 requiring instant feedback and high computational throughput.
+
+// TODO (Eugene Way)
+// chain-agnostic and scalability options feature

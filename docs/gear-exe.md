@@ -71,6 +71,18 @@ In contrast, Gear.exe supports parallel execution, allowing multiple computation
 This innovation is particularly beneficial for latency-sensitive applications,
 including high-frequency trading platforms, gaming environments, supply chain monitoring systems and more.
 
+At the core of this design is Gear.exe’s naturally parallel execution model: each program has its own isolated state and queue, enabling thousands of programs to be executed concurrently without coordination bottlenecks.
+
+This parallelism extends beyond the execution layer into the very architecture of Gear.exe itself, offering powerful horizontal scalability options. While current deployments may use a unified validator set and single Router, the system is inherently designed to support multiple scaling paradigms in the future:
+
+– Single Router with unified validator set: All validators serve all programs under one Router instance — simple and consistent.
+
+– Multiple independent Routers (clusters): Each Router has its own validator set and serves a distinct pool of programs, enabling Gear clusters to scale horizontally — all anchored to Ethereum L1.
+
+– Subgrouped validators within a single Router: Validators are partitioned to handle subsets of programs, reducing synchronization overhead and improving scalability within a single cluster.
+
+These potential architectures are not mutually exclusive — they can be combined to form a modular and adaptive execution fabric, where computation scales both within programs (via threads) and across program clusters. The result is a compute network that grows with demand while preserving Ethereum-level security and canonical finality.
+
 **Cost efficiency** is another defining feature of Gear.exe. By offloading intensive computations to its decentralized
 network, Gear.exe [reduces the costs](https://github.com/gear-foundation/arkanoid/tree/master) associated with executing
 complex logic. Additionally, it introduces a reverse gas model, where developers can cover transaction fees for users.
@@ -93,3 +105,5 @@ seamless Ethereum integration, expanded memory capacity, parallel execution, cos
 developer-friendly tools. By bridging the gap between Ethereum’s security and the performance demands of modern
 applications, Gear.exe is paving the way for the next generation of decentralized applications across industries such as
 finance, gaming, AI tools, math modeling, supply chain management and many more.
+
+Finally, the architectural foundation of Gear.exe is inherently chain-agnostic. While the current implementation is deeply integrated with Ethereum, the same execution model can be ported to other Layer-1 protocols. In this way, Gear.exe becomes not only a co-processor for Ethereum, but a general-purpose execution layer capable of extending scalable execution power to any chain that supports smart contract anchoring and event propagation.
