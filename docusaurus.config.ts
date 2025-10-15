@@ -91,6 +91,13 @@ const config: Config = {
           rel: "noopener noreferrer",
         },
         {
+          href: "/gear.exe-one-pager.pdf",
+          label: "[One Pager PDF Version]",
+          position: "left",
+          target: "_blank",
+          rel: "noopener noreferrer",
+        },
+        {
           href: "https://gear-tech.io",
           label: "[Gear Technologies]",
           position: "right",
