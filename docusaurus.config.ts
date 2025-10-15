@@ -91,7 +91,7 @@ const config: Config = {
           rel: "noopener noreferrer",
         },
         {
-          href: "/gear.exe-one-pager.pdf",
+          href: "/vara.eth-one-pager.pdf",
           label: "[One Pager PDF Version]",
           position: "left",
           target: "_blank",
