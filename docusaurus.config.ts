@@ -77,7 +77,7 @@ const config: Config = {
       },
       items: [
         {
-          href: "/gear.exe-whitepaper-0.2.pdf",
+          href: "/vara.eth-whitepaper.pdf",
           label: "[PDF Version]",
           position: "left",
           target: "_blank",
