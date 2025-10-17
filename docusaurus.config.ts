@@ -3,7 +3,7 @@ import type { Config } from "@docusaurus/types"
 import { themes } from "prism-react-renderer"
 
 const config: Config = {
-  title: "Gear.exe Whitepaper",
+  title: "Vara.eth Whitepaper",
   tagline:
     "Vision of Decentralized Bridgeless Computing Extension to Ethereum Network",
   favicon: "/img/favicon.ico",
@@ -19,7 +19,7 @@ const config: Config = {
   onDuplicateRoutes: "log",
 
   organizationName: "Gear Technologies", // Usually your GitHub org/username.
-  projectName: "Gear.exe-whitepaper", // Usually your repo name.
+  projectName: "Vara.eth-whitepaper", // Usually your repo name.
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -51,7 +51,8 @@ const config: Config = {
     metadata: [
       {
         name: "keywords",
-        content: "Gear, Gear.exe, GearProtocol, web3, Gear.exe whitepaper",
+        content:
+          "Vara, Vara.eth, GearProtocol, web3, Vara.exe whitepaper, Vara Network",
       },
       {
         name: "description",
@@ -69,9 +70,9 @@ const config: Config = {
       },
     },
     navbar: {
-      title: "Gear.exe Whitepaper",
+      title: "Vara.eth Whitepaper",
       logo: {
-        alt: "Gear.exe Whitepaper website",
+        alt: "Vara.eth Whitepaper website",
         src: "/img/logo.svg",
         className: "invert dark:invert-0",
       },
@@ -84,7 +85,7 @@ const config: Config = {
           rel: "noopener noreferrer",
         },
         {
-          href: "/gear.exe-technical-0.1.pdf",
+          href: "/vara.eth-technical-0.2",
           label: "[Tech Doc PDF Version]",
           position: "left",
           target: "_blank",
