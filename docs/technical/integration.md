@@ -24,7 +24,7 @@ that require immediate results, as it leverages Vara.eth's pre-confirmation mech
 Both integration methods are designed to be developer-friendly and scalable, ensuring that dApps can seamlessly
 incorporate Vara.eth's computational power without compromising security or performance.
 
-![Integration](/img/integration.png)
+![Integration](/img/integration.jpg)
 _This diagram illustrates native integration of an Ethereum-based dApp with Vara.eth_
 
 ## Brief Workflow for dApp Developers
