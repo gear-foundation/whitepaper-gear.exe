@@ -7,7 +7,7 @@ sidebar_position: 2
 
 :::note
 Curious about how **Vara.eth** works from developer perspective?  
-The [Technical Documentation](/gear.exe-technical-0.1.pdf) provides a full breakdown of its core components and execution model.
+The [Technical Documentation](/vara.eth-technical-0.2.pdf) provides a full breakdown of its core components and execution model.
 :::
 
 Vara.eth is a high-performance application platform built directly into Ethereum's ecosystem, powered by the battle-tested Gear Protocol engine that runs Vara Network. Rather than creating another separate chain, Vara.eth extends Ethereum itself with high-speed computation and real-time responsiveness—without bridges, without fragmenting liquidity, and without compromising on security.
