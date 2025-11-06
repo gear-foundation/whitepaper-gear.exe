@@ -54,38 +54,29 @@ Mirror Contracts handle three primary tasks:
   to be interpreted natively. This design fully replaces the older Decoder Contract model, making Mirrors the default and  
   universal interface layer.
 
-## Executors
+## Validators
 
-Executors are the backbone of the Vara.eth network, functioning as decentralized nodes that execute Wasm programs. These  
-nodes ensure the seamless operation of Vara.eth by maintaining redundancy, decentralization, and real-time computational  
-capabilities. Unlike traditional blockchain nodes, Executors operate without a  
-[shared storage](/docs/glossary.md#shared-storage) root, focusing entirely on program execution and result validation.  
-The responsibilities of Executors include:
+Validators are the backbone of the Vara.eth network — specialized nodes (also called validator nodes or executor nodes) that execute Wasm programs. These validators ensure the seamless operation of Vara.eth by maintaining redundancy, decentralization, and real-time computational capabilities. Unlike traditional blockchain validators that primarily verify transactions, Vara.eth validators actively execute computations and produce signed results. They operate without a [shared storage](/docs/glossary.md#shared-storage) root, focusing entirely on program execution and result validation.
 
-- **Event Detection**: Executors monitor events emitted by Router and Mirror Contracts on Ethereum. These events signal  
+The responsibilities of validators include:
+
+- **Event Detection**: Validators monitor events emitted by Router and Mirror Contracts on Ethereum. These events signal  
   the need to retrieve and execute specific Wasm programs stored in the Vara.eth network.
-- **Program Execution**: Upon detecting a valid event, Executors fetch the corresponding program, execute its logic, and  
+- **Program Execution**: Upon detecting a valid event, validators fetch the corresponding program, execute its logic, and  
   produce results. These computations leverage Gear Protocol's Wasm runtime, ensuring high performance and flexibility.
-- **Result Signing**: Executors sign computation results, which are then aggregated and finalized through the Router.
-- **Peer Coordination**: Executors communicate through a peer-to-peer (P2P) network, ensuring fault tolerance  
+- **Result Signing**: Validators sign computation results, which are then aggregated and finalized through the Router.
+- **Peer Coordination**: Validators communicate through a peer-to-peer (P2P) network, ensuring fault tolerance  
   and redundancy across the Vara.eth ecosystem.
 
-Executors are selected through [Symbiotic Protocol](/docs/glossary.md#symbiotic-protocol)'s restaking mechanism, which  
-aligns economic incentives with performance and reliability. Misbehavior, such as producing inaccurate results, is  
-deterred by a robust slashing mechanism that reduces the offending Executor's stake. This economic accountability  
-ensures that the network remains secure and trustworthy. Executors can also provide **pre-confirmations** — off-chain  
-attestations that give users immediate feedback before final settlement on Ethereum.
+Validators are operated by entities called [operators](/docs/glossary.md#operator), who are selected through [Symbiotic Protocol](/docs/glossary.md#symbiotic-protocol)'s restaking mechanism. This mechanism aligns economic incentives with performance and reliability. Misbehavior, such as producing inaccurate results, is deterred by a robust slashing mechanism that penalizes the validator's stake. This economic accountability ensures that the network remains secure and trustworthy. Validators can also provide **pre-confirmations** — off-chain attestations that give users immediate feedback before final settlement on Ethereum.
 
 ## Middleware
 
-Middleware connects Vara.eth to the [Symbiotic restaking](/docs/glossary.md#symbiotic-protocol) protocol, ensuring that technical execution is backed by economic  
-security. It manages operator registration, validator elections, reward routing, and slashing enforcement. By aligning  
-operators and stakers with transparent incentives, Middleware guarantees both accountability and resilience of the  
-network.
+Middleware connects Vara.eth to the [Symbiotic restaking](/docs/glossary.md#symbiotic-protocol) protocol, ensuring that technical execution is backed by economic security. It manages **[operators](/docs/glossary.md#operator)** (entities that run and maintain validator nodes), validator set elections, reward routing, and slashing enforcement. By aligning operators and stakers with transparent incentives, Middleware guarantees both accountability and resilience of the network.
 
 In practice, Middleware coordinates the flow of value and responsibility:
 
-- **Operator Lifecycle**: registering operators (executor nodes), tracking their performance, and enabling or disabling  
+- **Operator Lifecycle**: registering operators (entities running validator nodes), tracking their performance, and enabling or disabling  
   them within the network.
 - **Validator Elections**: selecting and rotating validator sets based on restaked collateral, ensuring fairness and  
   continuity of security.

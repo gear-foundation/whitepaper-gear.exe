@@ -37,14 +37,9 @@ blob, which resides outside Ethereum's main state but is accessible via archive 
 A software application that runs on a blockchain or decentralized network. dApps are powered by smart contracts and
 provide users with transparent and trustless interactions without relying on centralized servers.
 
-### Executor
-
-A decentralized node within the Vara.eth network responsible for executing Wasm programs. Executors retrieve programs,
-perform computations, and generate signed results, ensuring the network's reliability and scalability.
-
 ### Executable Balance
 
-A dedicated balance maintained by a Gear program to cover execution costs. Each time the program processes a message, a portion of this balance is consumed and later distributed to Executors and stakers. If the Executable Balance reaches zero, the program becomes inactive until replenished.
+A dedicated balance maintained by a Gear program to cover execution costs. Each time the program processes a message, a portion of this balance is consumed and later distributed to validators and stakers. If the Executable Balance reaches zero, the program becomes inactive until replenished.
 
 ### Finality
 
@@ -85,7 +80,7 @@ transaction finality due to the need for a dispute resolution window.
 
 ### Operator
 
-An entity responsible for running Executor nodes within the Vara.eth network. Operators are elected through the Symbiotic Protocol based on delegated stake and are accountable for reliable execution. They represent the economic and operational counterpart to Executors.
+An entity (individual or organization) responsible for running and maintaining [validator nodes](#validator-node-executor-node) within the Vara.eth network. Operators provide the technical infrastructure and are elected through the Symbiotic Protocol based on delegated stake. They are economically accountable for their validators' performance — receiving rewards for reliable execution and facing slashing penalties for misbehavior. Operators represent the bridge between the economic layer (staking) and the technical layer (computation).
 
 ### Pre-confirmation Mechanism
 
@@ -116,7 +111,7 @@ transitions dynamically through its architecture, enabling greater efficiency an
 
 ### Slashing
 
-A mechanism that penalizes Executors for malicious behavior or poor performance by reducing their staked collateral.
+A mechanism that penalizes validators for malicious behavior or poor performance by reducing their staked collateral.
 This process ensures the economic accountability of Vara.eth participants and maintains the network's integrity.
 
 ### Solidity
@@ -127,12 +122,20 @@ dApps).
 
 ### Symbiotic Protocol
 
-A decentralized restaking system used by Vara.eth to select and manage Executors. It facilitates staking, distributes
+A decentralized restaking system used by Vara.eth to select and manage validators. It facilitates staking, distributes
 rewards, and enforces penalties, ensuring a secure and scalable compute network.
+
+### Validator
+
+A specialized node within the Vara.eth network responsible for executing Wasm programs. Validators (also referred to as validator nodes or executor nodes) retrieve programs, perform computations, and generate signed results. Unlike traditional blockchain validators that primarily verify transactions, Vara.eth validators actively execute off-chain computations. Validators are operated by entities called [operators](#operator) and are selected through Symbiotic Protocol's restaking mechanism.
+
+### Validator Node (Executor Node)
+
+Technical term for the computational node software operated by an [operator](#operator). While "validator" is the primary term used throughout this documentation, "validator node" or "executor node" may be used when emphasizing the technical infrastructure. These nodes execute Wasm programs, monitor Ethereum events, and participate in result signing. See also [Validator](#validator).
 
 ### Vaults
 
-Intermediaries in the Symbiotic Protocol that manage the staking process for Executors. Vaults handle deposits,
+Intermediaries in the Symbiotic Protocol that manage the staking process for validators. Vaults handle deposits,
 withdrawals, and rewards, as well as enforce slashing policies.
 
 ### Wasm (WebAssembly)

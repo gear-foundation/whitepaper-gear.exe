@@ -27,7 +27,7 @@ enabling faster processing for applications like AI models, financial simulation
 optimizing workloads for parallel execution, Vara.eth significantly boosts throughput and reduces bottlenecks, ensuring
 that even the most demanding applications can operate seamlessly.
 
-Programs are inherently isolated and can run in parallel across executors. Additionally, developers can design their logic to further distribute workloads across multiple programs, enabling natural horizontal scaling.
+Programs are inherently isolated and can run in parallel across validators. Additionally, developers can design their logic to further distribute workloads across multiple programs, enabling natural horizontal scaling.
 
 ## Advanced Programming Environment
 
@@ -56,7 +56,7 @@ In Vara.eth, programs maintain two types of balances:
 
 This model allows anyone to send messages without incurring extra compute costs beyond the base Ethereum transaction fee.
 The Executable Balance is consumed during execution, while funds are distributed to
-the network's Executors as rewards. Developers can design applications that fund their Executable Balance through
+the network's validators as rewards. Developers can design applications that fund their Executable Balance through
 revenue models like user payments, fees, or even sponsorships.
 
 The reverse gas model enhances accessibility and usability, eliminating user-side complexity while promoting scalability
@@ -79,6 +79,3 @@ By avoiding block creation, Vara.eth eliminates the overhead
 associated with block production and consensus mechanisms, reduces latency, and enables real-time computation. This
 design enhances scalability and allows for more efficient resource utilization, making it ideal for applications
 requiring instant feedback and high computational throughput.
-
-// TODO (Eugene Way)
-// chain-agnostic and scalability options feature

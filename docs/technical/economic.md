@@ -36,9 +36,9 @@ Programs in Vara.eth maintain their Executable Balance through multiple methods:
   interactions. A portion of these payments can be converted into Executable Balance, creating a self-sustaining model
   for the program.
 
-### Executor Rewards
+### Validator Rewards
 
-When a program executes, the consumed portion of its Executable Balance is deducted and recorded in the Router Contract. These funds are later distributed to Executors and proportionally shared with stakers who delegated collateral, incentivizing reliable computation and maintaining network security.
+When a program executes, the consumed portion of its Executable Balance is deducted and recorded in the Router Contract. These funds are later distributed to validators and proportionally shared with stakers who delegated collateral, incentivizing reliable computation and maintaining network security.
 
 ### Transparency and Tracking
 
@@ -65,5 +65,5 @@ model:
   specific needs of their application.
 - **Resource Optimization:** The reverse gas model ensures efficient use of program funds, with balances directly linked
   to execution and general-purpose needs.
-- **Network Incentives:** Executors are rewarded for computation, promoting a robust and secure decentralized execution
+- **Network Incentives:** Validators are rewarded for computation, promoting a robust and secure decentralized execution
   environment.

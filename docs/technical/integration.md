@@ -11,7 +11,7 @@ Vara.eth offers two distinct methods for integrating Ethereum dApps, allowing de
 best suits their application's requirements.
 
 The first method, **Event-Based Integration**, relies on Ethereum smart contracts emitting events to request off-chain
-computations. These events are detected by Executors within the Vara.eth network, triggering the execution of the
+computations. These events are detected by validators within the Vara.eth network, triggering the execution of the
 specified Wasm program. Once the computation is complete, the results are sent back to Ethereum through the Mirror
 Contract. This approach ensures a decentralized interaction between Ethereum and Vara.eth, maintaining the security and
 integrity of the process.
