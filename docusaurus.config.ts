@@ -9,10 +9,10 @@ const config: Config = {
   favicon: "/img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://gear-tech.io",
+  url: "https://eth.vara.network",
 
   // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: "/gear-exe/whitepaper/",
+  baseUrl: "/vara-eth/whitepaper/",
 
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "log",
@@ -85,7 +85,7 @@ const config: Config = {
           rel: "noopener noreferrer",
         },
         {
-          href: "/vara.eth-technical-0.2",
+          href: "/vara.eth-technical-0.2.pdf",
           label: "[Tech Doc PDF Version]",
           position: "left",
           target: "_blank",
@@ -104,8 +104,8 @@ const config: Config = {
           position: "right",
         },
         {
-          href: "https://gear-tech.io/gear-exe",
-          label: "[Gear.exe]",
+          href: "https://eth.vara.network",
+          label: "[Vara.eth]",
           position: "right",
         },
         {
