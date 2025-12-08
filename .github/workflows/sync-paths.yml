@@ -1,0 +1,49 @@
+name: Sync Whitepaper to Vara ETH Site
+
+on:
+  push:
+    branches: [ master ]
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source (whitepaper-gear.exe)
+        uses: actions/checkout@v4
+
+      - name: Checkout target (vara-eth-site)
+        uses: actions/checkout@v4
+        with:
+          repository: gear-foundation/vara-eth-site
+          token: ${{ secrets.TARGET_REPO_TOKEN }}
+          path: target
+          fetch-depth: 0
+
+      - name: Sync docs and static to target repo
+        run: |
+          DEST="target/content/whitepaper"
+          mkdir -p "$DEST"
+
+          echo "🔄 Syncing content to $DEST"
+          rsync -av --delete \
+            docs "$DEST/docs" \
+            static "$DEST/static"
+
+      - name: Commit and push changes
+        working-directory: target
+        run: |
+          git config user.email "github-actions@github.com"
+          git config user.name "GitHub Actions"
+
+          if git status --porcelain | grep .; then
+            echo "🟢 Changes detected — committing"
+            git add .
+            git commit -m "Sync whitepaper from whitepaper-gear.exe"
+            git push origin main
+          else
+            echo "⚪ No changes to sync — nothing to commit"
+          fi
