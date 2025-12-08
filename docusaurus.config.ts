@@ -12,7 +12,7 @@ const config: Config = {
   url: "https://eth.vara.network",
 
   // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: "/vara-eth/whitepaper/",
+  baseUrl: "/whitepaper/",
 
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "log",
