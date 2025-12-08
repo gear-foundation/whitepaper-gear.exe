@@ -3,23 +3,23 @@ import type { Config } from "@docusaurus/types"
 import { themes } from "prism-react-renderer"
 
 const config: Config = {
-  title: "Gear.exe Whitepaper",
+  title: "Vara.eth Whitepaper",
   tagline:
     "Vision of Decentralized Bridgeless Computing Extension to Ethereum Network",
   favicon: "/img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://gear-tech.io",
+  url: "https://eth.vara.network",
 
   // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: "/gear-exe/whitepaper/",
+  baseUrl: "/vara-eth/whitepaper/",
 
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "log",
   onDuplicateRoutes: "log",
 
   organizationName: "Gear Technologies", // Usually your GitHub org/username.
-  projectName: "Gear.exe-whitepaper", // Usually your repo name.
+  projectName: "Vara.eth-whitepaper", // Usually your repo name.
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -51,7 +51,8 @@ const config: Config = {
     metadata: [
       {
         name: "keywords",
-        content: "Gear, Gear.exe, GearProtocol, web3, Gear.exe whitepaper",
+        content:
+          "Vara, Vara.eth, GearProtocol, web3, Vara.exe whitepaper, Vara Network",
       },
       {
         name: "description",
@@ -69,22 +70,22 @@ const config: Config = {
       },
     },
     navbar: {
-      title: "Gear.exe Whitepaper",
+      title: "Vara.eth Whitepaper",
       logo: {
-        alt: "Gear.exe Whitepaper website",
+        alt: "Vara.eth Whitepaper website",
         src: "/img/logo.svg",
         className: "invert dark:invert-0",
       },
       items: [
         {
-          href: "/gear.exe-whitepaper-0.2.pdf",
+          href: "/vara.eth-whitepaper.pdf",
           label: "[PDF Version]",
           position: "left",
           target: "_blank",
           rel: "noopener noreferrer",
         },
         {
-          href: "/gear.exe-technical-0.1.pdf",
+          href: "/vara.eth-technical-0.2.pdf",
           label: "[Tech Doc PDF Version]",
           position: "left",
           target: "_blank",
@@ -103,8 +104,8 @@ const config: Config = {
           position: "right",
         },
         {
-          href: "https://gear-tech.io/gear-exe",
-          label: "[Gear.exe]",
+          href: "https://eth.vara.network",
+          label: "[Vara.eth]",
           position: "right",
         },
         {
