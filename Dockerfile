@@ -3,7 +3,7 @@ FROM node:lts AS base
 ENV FORCE_COLOR=0
 RUN corepack enable
 WORKDIR /opt/docusaurus
-
+# Check
 # Stage 2a: Development mode
 FROM base AS dev
 WORKDIR /opt/docusaurus
