@@ -61,7 +61,7 @@ const config: Config = {
       },
     ],
     colorMode: {
-      defaultMode: "dark",
+      defaultMode: "light",
       disableSwitch: true,
     },
     docs: {
@@ -74,7 +74,6 @@ const config: Config = {
       logo: {
         alt: "Vara.eth Whitepaper website",
         src: "/img/logo.svg",
-        className: "invert dark:invert-0",
       },
       items: [
         {

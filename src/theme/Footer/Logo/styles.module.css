@@ -1,9 +1,28 @@
 .footerLogoLink {
-  opacity: 0.5;
   transition: opacity var(--ifm-transition-fast)
     var(--ifm-transition-timing-default);
 }
 
 .footerLogoLink:hover {
   opacity: 1;
+}
+
+.navbar__brand .navbar__logo {
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  border-radius: 9999px !important;
+  overflow: hidden !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: 0.5rem;
+  flex: 0 0 auto;
+}
+
+.navbar__brand .navbar__logo img,
+.navbar__brand .navbar__logo svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: cover;
 }
