@@ -23,15 +23,16 @@ jobs:
           path: target
           fetch-depth: 0
 
-      - name: Sync docs and static to target repo
+      - name: Clean and sync docs and static to target repo
         run: |
           DEST="target/content/whitepaper"
+          echo "🧹 Cleaning $DEST"
+          rm -rf "$DEST"
           mkdir -p "$DEST"
 
-          echo "🔄 Syncing content to $DEST"
-          rsync -av --delete \
-            docs "$DEST/docs" \
-            static "$DEST/static"
+          echo "🔄 Syncing docs and static content to $DEST"
+          rsync -av docs/ "$DEST/docs/"
+          rsync -av static/ "$DEST/static/"
 
       - name: Commit and push changes
         working-directory: target
