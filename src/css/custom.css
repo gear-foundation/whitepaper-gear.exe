@@ -176,11 +176,11 @@ aside.theme-doc-sidebar-container {
 }
 
 .footer__links {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .footer__title {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: #2c2137;
 }
@@ -210,7 +210,7 @@ aside.theme-doc-sidebar-container {
 
 .footer__copyright {
   text-align: left;
-  font-size: 12px;
+  font-size: 13px;
   color: rgba(92, 105, 110, 0.7);
 }
 
