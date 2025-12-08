@@ -47,7 +47,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: "/img/opengraph-image.jpeg",
+    image: "/img/opengraph-image.png",
     metadata: [
       {
         name: "keywords",
