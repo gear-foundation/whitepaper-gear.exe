@@ -18,7 +18,7 @@ export const AccordionTrigger = React.forwardRef<
   <Accordion.Header className="flex">
     <Accordion.Trigger
       className={clsx(
-        "group flex flex-1 items-center justify-between p-0 pb-4 outline-none bg-transparent border-0 [border-bottom:1px_solid_hsla(0,0%,100%,0.15)] uppercase",
+        "group flex flex-1 items-center justify-between p-0 pb-4 outline-hidden bg-transparent border-0 [border-bottom:1px_solid_hsla(0,0%,100%,0.15)] uppercase",
         className
       )}
       {...props}
@@ -53,7 +53,7 @@ export const AccordionContent = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <Accordion.Content
     className={clsx(
-      "overflow-hidden data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown",
+      "overflow-hidden data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down",
       className
     )}
     {...props}
