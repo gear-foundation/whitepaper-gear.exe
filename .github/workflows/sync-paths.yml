@@ -31,7 +31,7 @@ jobs:
           mkdir -p "$DOCS_DEST"
           rsync -av docs/ "$DOCS_DEST/"
 
-          # Sync contents of static/ → target/public/whitepaper/
+          # Sync contents of public/ → target/public/whitepaper/
           STATIC_DEST="target/public/whitepaper"
           rm -rf "$STATIC_DEST"
           mkdir -p "$STATIC_DEST"
