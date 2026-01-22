@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "index",
+    "introduction",
+    "vara-exe",
+    "features",
+    "technical",
+    "usecases",
+    "future",
+    "summary",
+    "glossary",
+    "technical-docs",
+    "..."
+  ],
+  "root": true
+}

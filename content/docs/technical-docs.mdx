@@ -1,14 +1,13 @@
 ---
 title: Technical Documentation
-sidebar_position: 10
+description: Vara.eth Technical Documentation
 ---
 
-# Vara.eth Technical Documentation
+<Callout title="Document Info">
+    **Authors:** Eugene Way
 
-:::info Document Info
-**Authors:** Eugene Way  
-**Version:** 0.2 | October 2025  
-:::
+    **Version:** 0.2 | October 2025
+</Callout>
 
 ## Introduction
 
@@ -21,48 +20,13 @@ This technical documentation provides a comprehensive overview of Vara.eth's arc
 - Economic model and incentive structures
 - Security considerations and best practices
 
-:::tip Quick Links
+<Callout title="Quick Links">
+    - [Main Whitepaper](https://vara.network) - High-level overview
+    - [GitHub Repository](https://github.com/gear-tech/gear) - Source code and implementation
+    - [Official Website](https://gear-tech.io) - Resources and community
+</Callout>
 
-- [Main Whitepaper](https://vara.network) - High-level overview
-- [GitHub Repository](https://github.com/gear-tech/gear) - Source code and implementation
-- [Official Website](https://gear-tech.io) - Resources and community
-  :::
-
-## Table of Contents
-
-1. [Context](#context)
-2. [Actors](#actors)
-3. [Components](#components)
-   - [3.0 Gear Program](#gear-program)
-   - [3.1 Router](#router)
-   - [3.2 Mirror](#mirror)
-   - [3.3 Validators](#validators)
-   - [3.4 Middleware](#middleware)
-   - [3.5 Sails / SDK](#sails-sdk)
-4. [System Flows](#system-flows)
-   - [4.1 Program Lifecycle Flow](#program-lifecycle)
-   - [4.2 Authority Flow](#authority-flow)
-   - [4.3 Settlement & Finality Flow](#settlement-finality)
-   - [4.4 Pre-confirmation Flow](#pre-confirmation)
-5. [Design Details](#design-details)
-   - [5.1 Ordering of Inputs](#ordering)
-   - [5.1.1 FROST Threshold Signatures](#frost-details)
-   - [5.2 Per-program Queues](#per-program-queues)
-   - [5.3 Determinism](#determinism)
-   - [5.4 Parallelism](#parallelism)
-   - [5.5 Timing Windows](#timing-windows)
-   - [5.6 Reverse-Gas Model](#reverse-gas)
-   - [5.7 Reorgs & Batch Chaining](#reorgs)
-   - [5.8 Safety Constraints](#safety)
-   - [5.9 ZK-Verification Mode](#zk-verification)
-6. [Economics](#economics)
-   - [6.1 Token and Bridge Scope](#token-bridge)
-   - [6.2 Rewards Funding & Splits](#rewards)
-   - [6.3 Slashing Policy](#slashing)
-   - [6.4 Parameterization](#parameters)
-7. [Glossary and Terms](#glossary)
-
-## 1. Context {#context}
+## 1. Context
 
 Vara.eth is a high-performance application platform built directly into Ethereum's ecosystem, powered by the Gear Protocol execution engine. Operator-operated validators watch Router/Mirror contracts, execute uploaded WASM programs (Gear runtime), and, by validator consensus, finalize state transitions back to Ethereum. There are no Vara.eth blocks, no shared ledger — only per-program state roots mirrored on L1.
 
@@ -74,7 +38,7 @@ Additionally, Vara.eth provides a pre-confirmation mechanism that delivers insta
 
 The key differences vs rollups are: no single sequencer, no L2 blocks, no global L2 state. Ordering and delivery arise from validator consensus on per-program transitions. Horizontal scaling comes from independent program queues and parallel execution.
 
-## 2. Actors {#actors}
+## 2. Actors
 
 The Vara.eth architecture consists of several key actors, each with distinct responsibilities that ensure the network operates securely, efficiently, and decentrally.
 
@@ -137,14 +101,17 @@ Developer-facing API layer for interacting with Gear programs without on-chain d
 - Integrate with `@gear-js/api` for connection and subscriptions.
 - Provide a stable contract interface for dApp developers.
 
-## 3. Components {#components}
+## 3. Components
 
 Vara.eth is built on several interconnected components that work together to provide a seamless, scalable, and efficient computational layer for Ethereum.
 
-![Diagram](/img/architecture-overview.png)
-_Component overview showing Router, Mirror, validators, Middleware, and WASM programs_
+<figure>
+    ![Component overview illustration](/img/architecture-overview.png)
 
-### 3.0 Gear Program (Core, Vara.eth) {#gear-program}
+    <figcaption>Component overview showing Router, Mirror, validators, Middleware, and WASM programs</figcaption>
+</figure>
+
+### 3.0 Gear Program (Core, Vara.eth)
 
 The **Gear Program** is the on-chain representation of a WASM smart contract running inside the Gear runtime. It encapsulates program logic, state, and ABI definitions, and is the execution target for messages routed from Ethereum via the Mirror contract.
 
@@ -157,7 +124,7 @@ The program is deployed and registered through the Router, either as a minimal i
 - **Interface Contract:** Optionally exposes a strongly typed ABI (Sails interface) for client encoding/decoding.
 - **Deterministic Addressing:** Program `ActorId` and L1 Mirror address are derived from `(codeId, salt)` combination.
 
-### 3.1 Router (Core, Ethereum L1) {#router}
+### 3.1 Router (Core, Ethereum L1)
 
 The **Router** is the on-chain coordination hub of Vara.eth. It anchors all off-chain execution back to Ethereum by finalizing batches of work with validator signatures. Whenever validators replay program queues and produce transitions, they eventually come back to the Router to have those results recognized on L1. In that sense, the Router is the single entry point where Vara.eth state becomes Ethereum state.
 
@@ -184,7 +151,7 @@ The Router enforces strict rules when finalizing a batch. Each `batchHash` must 
 
 From a developer's perspective, the Router exposes only a few public calls — `requestCodeValidation(...)`, `createProgram(...)`, and `commitBatch(...)`. Everything else is internal to its settlement flow.
 
-### 3.2 Mirror (Core, Ethereum L1) {#mirror}
+### 3.2 Mirror (Core, Ethereum L1)
 
 The **Mirror** is the L1 twin of a Gear program. It queues user requests, applies state transitions authorized by the Router, and emits user-level events for applications and indexers. There are two deployments: the main Mirror implementation, and `MirrorProxy` — a minimal proxy that always points to the latest Mirror version. MirrorProxy ensures consistency and provides an ABI-friendly interface for developer tools and explorers.
 
@@ -210,7 +177,7 @@ From a developer's perspective, interaction with a Gear program is intentionally
 
 If no ABI is attached, programs can still be accessed through the raw entrypoint `sendMessage(bytes)`, where SCALE-encoded payloads are sent directly. In either case, event decoding is handled externally by the Sails framework based on the program's IDL, so no on-chain decoder contract is required. This avoids additional gas overhead for ABI translation, while still allowing applications and wallets to display program events in a familiar, human-readable form.
 
-### 3.3 validators (Off-Chain) {#validators}
+### 3.3 validators (Off-Chain)
 
 **validators** are validator nodes operated by operators that monitor Router and Mirror events, run the Gear WASM runtime off-chain, process program queues deterministically, and co-sign per-block batches that the Router finalizes on L1. There is no centralized sequencer; ordering emerges from validator consensus on each batch.
 
@@ -265,7 +232,7 @@ Election and timing guards apply:
 
 validators follow best-head discipline for reorg handling: on reorg, per-program queues are rebuilt for the new head and transitions are recomputed. Any non-chaining batch is rejected on-chain.
 
-### 3.4 Middleware (Symbiotic Layer) {#middleware}
+### 3.4 Middleware (Symbiotic Layer)
 
 Validators are the authority that co-sign Vara.eth batch commitments, while operators run the off-chain validators that observe Router and Mirror events and derive program state transitions. The validator set is sourced via the Symbiotic restaking stack and is activated on Ethereum L1 by the Router contract on an era schedule. Rewards for operators and stakers are routed on-chain through a dedicated Middleware contract.
 
@@ -319,7 +286,7 @@ This ensures misbehaving operators or misconfigured vaults can be penalized with
 
 Middleware validates its parameters against the Router's era schedule to avoid conflicts. For example, vault epochs must be at least twice the era length, and veto or slash delays must align with era boundaries. This guarantees that elections, reward distribution, and slashing do not interfere with the Router's validator rotation cadence.
 
-### 3.5 Sails / SDK {#sails-sdk}
+### 3.5 Sails / SDK
 
 **Sails** is the developer toolkit for Gear programs: it lets you author programs in Rust, define their interfaces (IDL), and generate client integrations for Ethereum. Sails complements the on-chain contracts (Router/Mirror) by providing type-safe encoding/decoding, ABI generation, and ready-to-use client bindings.
 
@@ -337,11 +304,11 @@ Typed calls are compiled against the Sails IDL. At runtime, Sails encodes reques
 
 #### Event Framing to Ethereum
 
-Sails maps Rust events to Ethereum logs via a lightweight event frame. Programs emit frames (topics count, topics, ABI payload) to a reserved address `ETH_EVENT_ADDR`. The Mirror parses the frame and re-emits it as a native EVM log (`log1..log4`). Selector-collision guards ensure protocol safety. The result is a 1:1 mapping of program events to Ethereum logs that indexers and explorers can consume without custom decoders.
+Sails maps Rust events to Ethereum logs via a lightweight event frame. Programs emit frames (topics count, topics, ABI payload) to a reserved address `ETH_EVENT_ADDR`. The Mirror parses the frame and re-emits it as a native EVM log (`log1..log4`). Selector-collision guards ensure protocol safety. The result is a `1:1` mapping of program events to Ethereum logs that indexers and explorers can consume without custom decoders.
 
-## 4. System Flows {#system-flows}
+## 4. System Flows
 
-### 4.1 Program Lifecycle Flow {#program-lifecycle}
+### 4.1 Program Lifecycle Flow
 
 A Gear program follows a clear sequence of steps: it starts as a WASM blob on Ethereum, becomes an active instance that processes messages, and finally produces state updates anchored on L1. Here's how it works end-to-end.
 
@@ -399,8 +366,13 @@ From here, anyone can interact with the program by sending messages:
 
 Each call is just a simple transaction to the Mirror. validators watch these events, classify them into the right per-program queues, and prepare them for execution in strict `(blockNumber, txIndex, logIndex)` order.
 
-![Diagram](/img/program-message-processing.png)
-_User sends message → Mirror queues → validators execute → Router commits batch → Mirror applies state transition_
+<figure>
+    ![Program message processing diagram](/img/program-message-processing.png)
+
+    <figcaption>
+        User sends message → Mirror queues → validators execute → Router commits batch → Mirror applies state transition
+    </figcaption>
+</figure>
 
 #### Step 6: Off-Chain Execution
 
@@ -422,7 +394,7 @@ In a successful batch, the Router processes all sections in order:
 
 Afterward, the Router emits `BatchCommitted`, `HeadCommitted`, and `NextEraValidatorsCommitted`. At this point, the program's state is final on Ethereum.
 
-### 4.2 Authority Flow (Symbiotic → Router) {#authority-flow}
+### 4.2 Authority Flow (Symbiotic → Router)
 
 The Authority Flow explains how economic stake from Symbiotic restaking transforms into active validator authority on Ethereum L1.
 
@@ -435,8 +407,13 @@ It covers: how stakers fund vaults, how operators register, how elections produc
 - **Router.sol** — accepts validator commitments inside batches, activates new sets, enforces signatures. [[source]](https://github.com/gear-tech/gear/blob/master/ethexe/contracts/src/Router.sol)
 - **FROST/DKG tooling**
 
-![Diagram](/img/autority-flow.png)
-_Stakers → Vaults → Operators → Validators → Router (era activation) → Batch signing_
+<figure>
+    ![Authority flow diagram](/img/autority-flow.png)
+
+    <figcaption>
+        Stakers → Vaults → Operators → Validators → Router (era activation) → Batch signing
+    </figcaption>
+</figure>
 
 #### Step 1: Stake & Opt-In
 
@@ -492,7 +469,7 @@ If misbehavior is detected, Middleware can propose a slash using `requestSlash(.
 
 **Sources:** `Middleware::requestSlash`, `Middleware::executeSlash`, `Middleware::_validateStorage`
 
-### 4.3 Settlement & Finality Flow {#settlement-finality}
+### 4.3 Settlement & Finality Flow
 
 This flow explains how the validator set applies authority to make execution final on L1: what exactly is signed, how batch sections are applied, which contracts are involved, and which checks guarantee atomic "all-or-nothing" outcomes. If the Authority/Validators flow explains where authority comes from, this section shows how that authority is exercised per block.
 
@@ -502,12 +479,17 @@ This flow explains how the validator set applies authority to make execution fin
 - **Mirror (L1)** — per-program proxy that applies transitions (`performStateTransition`) [[source]](https://github.com/gear-tech/gear/blob/master/ethexe/contracts/src/Mirror.sol)
 - **Middleware (L1)** — reward/slashing routing [[source]](https://github.com/gear-tech/gear/blob/master/ethexe/contracts/src/Middleware.sol)
 
-![Diagram](/img/finality-flow.png)
-_validators build batch → FROST signatures → Router verifies → Apply transitions → Emit finality events_
+<figure>
+    ![Finality flow diagram](/img/finality-flow.png)
+
+    <figcaption>
+        Validators build batch → FROST signatures → Router verifies → Apply transitions → Emit finality events
+    </figcaption>
+</figure>
 
 #### Step 1: Batch Construction (off-chain)
 
-validators order all pending inputs (per-program queues + system requests), execute Gear WASM programs deterministically, and produce:
+Validators order all pending inputs (per-program queues + system requests), execute Gear WASM programs deterministically, and produce:
 
 - `StateTransitions` (new stateHash, messages, value transfers, exits)
 - `CodeCommitments` (validation results)
@@ -540,7 +522,7 @@ Next, code-validation results are finalized; rewards are routed to Middleware an
 
 Once the batch is fully applied, the Router emits `BatchCommitted`, `HeadCommitted`, and `NextEraValidatorsCommitted`. These events mark the moment when off-chain execution has been anchored to Ethereum L1, making the results immutable and final.
 
-### 4.4 Pre-confirmation Flow {#pre-confirmation}
+### 4.4 Pre-confirmation Flow
 
 Pre-Confirmation is a mechanism that allows users to see the result of program execution almost instantly, before the transaction is finalized on Ethereum L1. In practice, the user submits a transaction to a program's Mirror, and the SDK can immediately fetch the execution outcome via RPC.
 
@@ -548,12 +530,18 @@ The flow is the same as normal execution: validators track the best Ethereum L1 
 
 Later, when the batch for that same head is submitted on-chain via `Router.commitBatch(...)`, the process continues in the usual way: the Router checks signatures and batch chaining, applies the state transitions, and anchors them as final Ethereum L1 state. In this way, Pre-Confirmation uses the same execution and signing mechanism as final settlement, but makes the results available to applications immediately via RPC, with finality coming later in the normal batch process.
 
-![Diagram](/img/pre-confirmation.png)
-_User sends message → validators execute immediately → Sign with FROST → SDK fetches & verifies → Later: batch commits on L1_
+<figure>
+    ![Pre-confirmation flow diagram](/img/pre-confirmation.png)
 
-## 5. Design Details {#design-details}
+    <figcaption>
+        User sends message → validators execute immediately → Sign with FROST → SDK fetches &amp; verifies → Later:
+        batch commits on L1
+    </figcaption>
+</figure>
 
-### 5.1 Ordering of Inputs {#ordering}
+## 5. Design Details
+
+### 5.1 Ordering of Inputs
 
 Ordering of inputs is the first discipline that Vara.eth enforces when consuming Ethereum L1 events. Every block on Ethereum may emit many Router and Mirror logs, and validators must turn this raw, unordered stream into a strict sequence that can be deterministically replayed by every validator. The rule is simple but absolute: all logs are sorted by `(blockNumber, txIndex, logIndex)` and then classified into system events (from Router) and program events (from Mirrors). This guarantees that no validator can reorder or skip an input — if two validators observe the same Ethereum head, they will construct the exact same sequence of inputs. This ordering discipline is what allows the system to remain leaderless, since determinism replaces the need for a sequencer.
 
@@ -572,7 +560,7 @@ Vara.eth uses FROST (Flexible Round-Optimized Schnorr Threshold Signatures) as t
 
 FROST signatures are compact, gas-efficient, and compatible with future zero-knowledge proof systems. The threshold property ensures both security (no minority can sign invalid batches) and liveness (the network operates even if validators are offline). When eras rotate, new keys are generated in advance during the election window, ensuring seamless transitions without halting batch finalization.
 
-### 5.2 Per-program Queues {#per-program-queues}
+### 5.2 Per-program Queues
 
 Once inputs are ordered, Vara.eth separates them into per-program queues. Each program (represented on L1 by its Mirror contract) has its own isolated queue where messages, replies, claims, and top-ups are enqueued. validators consume these queues independently, ensuring that the ordering discipline is preserved within each program but does not constrain other programs.
 
@@ -580,7 +568,7 @@ This isolation is the key design choice that gives Vara.eth its parallelism. Unl
 
 In other words, the Router ensures global input ordering, but Mirrors enforce per-program locality. Together, this model guarantees determinism and safety while enabling unbounded parallel execution.
 
-### 5.3 Determinism {#determinism}
+### 5.3 Determinism
 
 Determinism is the foundation of validator agreement in Vara.eth. Every validator that observes the same Ethereum head must produce exactly the same state transitions for a given program. To make this possible, the runtime enforces strict rules at every layer:
 
@@ -590,7 +578,7 @@ Determinism is the foundation of validator agreement in Vara.eth. Every validato
 
 Because of these guarantees, determinism replaces the need for a central sequencer. Validators do not need to "agree" on the order of execution in real time — the system ensures that if they see the same inputs, they will independently compute the same outputs. This property makes Vara.eth resilient to forks, network delays, or adversarial scheduling: finality depends only on threshold signatures, not on who executed first.
 
-### 5.4 Parallelism {#parallelism}
+### 5.4 Parallelism
 
 As previously noted, parallelism is foundational to Vara.eth's scalability. At the execution layer, each program operates within its own isolated queue, allowing multiple programs to run concurrently. Deterministic processing within each program ensures safety, while allowing horizontally scalable execution across threads.
 
@@ -604,7 +592,7 @@ Parallelism also extends to the architecture's validator and router layers, open
 
 These models can be combined, forming a scalable execution fabric: computation scales both within programs (via threads) and across Vara clusters, all while preserving Ethereum-level security and continuity.
 
-### 5.5 Timing Windows {#timing-windows}
+### 5.5 Timing Windows
 
 In Vara.eth, execution is not only about ordering inputs correctly but also about making sure they happen within the right time window. Timing windows define when an action is valid and how long it stays valid. This matters because Vara.eth connects two timelines:
 
@@ -617,7 +605,7 @@ For validators this means they must always track both Ethereum block time and th
 
 The effect is simple: if something comes outside its timing window, it is invalid by definition. This prevents replay of old signatures, blocks arriving out of order, or late commits slipping into the system. For clients and users, it also means predictability: once the window closes, previews can safely be treated as final.
 
-### 5.6 Reverse-Gas Model {#reverse-gas}
+### 5.6 Reverse-Gas Model
 
 In Vara.eth, transaction costs are flipped compared to the standard Ethereum gas model. On Ethereum, every caller pre-pays gas for execution, which makes even simple user interactions depend on unpredictable compute costs. Vara.eth introduces the Reverse-Gas Model, where users only pay Ethereum L1 gas in ETH to submit their message, while the actual program execution is funded from the program's own balance in wVARA.
 
@@ -627,8 +615,14 @@ Mirror immediately pulls the tokens into the Router during ingress. The Router a
 
 validators then process program queues deterministically in the Gear WASM runtime. They know exactly how much balance is available to each program by observing ingress logs from Router, and they simulate execution accordingly. CPU time is metered with a predictable policy — every program gets a free compute threshold first, and beyond that compute is charged at a fixed `wvaraPerSecond` rate. If a program's balance is insufficient, its messages are not discarded; they simply remain queued until more funds arrive. Importantly, validators never "run on IOUs" because the Router has already pulled the wVARA upfront, guaranteeing solvency before any off-chain execution starts.
 
-![Diagram](/img/gas-reverse.png)
-_User sends message (pays ETH) → Mirror pulls wVARA to Router → validators observe balance → Execute program → Consume executable balance → Distribute to validators_
+<figure>
+    ![Gas reverse flow diagram](/img/gas-reverse.png)
+
+    <figcaption>
+        User sends message (pays ETH) → Mirror pulls wVARA to Router → validators observe balance → Execute program →
+        Consume executable balance → Distribute to validators
+    </figcaption>
+</figure>
 
 Final settlement on Ethereum L1. When validators submit a batch via `commitBatch(...)`, the Router enforces chaining and signatures and then applies the batch atomically. As part of settlement the Router debits the program's Executable Balance (on the Router) for the metered compute.
 
@@ -642,7 +636,7 @@ In Vara.eth, program execution balances are never stored on the program's own Mi
 
 It also keeps settlement safe. A batch on Ethereum L1 must either apply fully or not at all. If Mirrors moved funds before a batch was finalized, money could "leak" and then be rolled back inconsistently. By holding execution balances in the Router until finality, the system guarantees atomicity: nothing moves until the batch is proven valid. Only then, if the program is meant to receive value for its logic, does the Router transfer it to the Mirror. This way the Router handles compute funding, and the Mirror only ever holds tokens that are safe for the program to spend.
 
-### 5.7 Reorgs & Batch Chaining {#reorgs}
+### 5.7 Reorgs & Batch Chaining
 
 In Vara.eth, history must stay linear even though Ethereum itself can reorder blocks during short-range reorgs. validators therefore treat Ethereum as a moving target: they always follow the node's current best head and rebuild their previews if that head changes.
 
@@ -654,7 +648,7 @@ Finalization is all-or-nothing. If the batch's signatures, timing, or chaining c
 
 Pre-confirmations fit naturally into this model. validators can expose off-chain results to users right after local replay, giving applications instant feedback. But these results are always provisional: if Ethereum reorgs before the batch is finalized, the preview may be replaced by a recomputed one.
 
-### 5.8 Safety Constraints (Summary) {#safety}
+### 5.8 Safety Constraints (Summary)
 
 This section serves as a brief recap of the previous design details. It highlights the core invariants that explain why Vara.eth can guarantee safe execution and final application of results without requiring a trusted sequencer or coordinator.
 
@@ -665,7 +659,7 @@ This section serves as a brief recap of the previous design details. It highligh
 
 Together, these constraints summarize why Vara.eth maintains safety even under reorgs, validator rotations, or adversarial inputs: determinism ensures agreement, accounting ensures solvency, and atomic batch rules ensure consistency of state.
 
-### 5.9 ZK-Verification Mode {#zk-verification}
+### 5.9 ZK-Verification Mode
 
 ZK-Verification Mode is a future security enhancement that uses zero-knowledge proofs to validate state transitions. While the current system relies on economic security—validators risk slashing if they sign incorrect batches—ZK mode provides cryptographic guarantees that execution was performed correctly, regardless of validator behavior.
 
@@ -687,11 +681,11 @@ validators process programs and generate state transitions as usual. Before a ba
 
 Programs work identically in both modes. The verification mechanism is transparent to program logic—whether validated by signatures or proofs, state transitions follow the same format. Developers choose their security model at deployment: Hybrid for performance-critical apps, Pure ZK for security-critical ones. The current FROST system remains the default for speed and efficiency, with ZK mode as an opt-in enhancement.
 
-## 6. Economics {#economics}
+## 6. Economics
 
 The economic model of Vara.eth is built around the wVARA token. It acts both as the fuel for program execution and as collateral for validators via Symbiotic. This section explains how wVARA is issued, how rewards are funded and split, how slashing ensures accountability, and how parameters are configured.
 
-### 6.1 Token and Bridge Scope {#token-bridge}
+### 6.1 Token and Bridge Scope
 
 The core asset of the system is **wVARA**, a wrapped version of VARA issued on Ethereum L1 through a two-way bridge with Vara Network. When users move VARA from Vara, the native tokens are locked and an equivalent amount of wVARA is minted on Ethereum; the reverse process burns wVARA and unlocks VARA back on Vara.
 
@@ -699,19 +693,19 @@ All system contracts — Router, Mirror, and Middleware — operate exclusively 
 
 The same token also secures the validator set: stakers deposit wVARA into Symbiotic Vaults and delegate it to operators. This way, computation and security are tied to one unified asset, avoiding liquidity fragmentation.
 
-### 6.2 Rewards Funding & Splits {#rewards}
+### 6.2 Rewards Funding & Splits
 
 Validator and staker rewards are funded from a dedicated wVARA rewards pool. At batch finalization, the Router triggers distribution by calling into Middleware, which splits rewards across operators and their delegating stakers.
 
 Operators earn rewards directly in proportion to their activity and role in finalizing batches. Stakers earn their share via Vaults, proportional to the stake they delegated. The exact parameters — emission rate, operator vs. staker share, distribution cadence — are governed and can be updated via Router governance.
 
-### 6.3 Slashing Policy {#slashing}
+### 6.3 Slashing Policy
 
 To enforce correct behavior, Vara.eth integrates slashing hooks. Misbehavior — such as invalid attestations or malicious execution — can trigger a `requestSlash` through Middleware. The corresponding operator's Vault receives the request, and the VetoSlasher module enforces windows for veto and execution.
 
 If the challenge stands, an `executeSlash` call burns or confiscates a portion of the operator's and delegators' wVARA stake. This direct economic penalty ensures that operators remain accountable and ties network safety to financial risk.
 
-### 6.4 Parameterization {#parameters}
+### 6.4 Parameterization
 
 Key system parameters are configurable and updated via Router governance. Critical parameters include: the validator signing threshold (`signingThresholdPercentage`), the era length (`eraDuration`), the base execution fee rate (`wvaraPerSecond`), and the free compute allowance (`freeThreshold`).
 
@@ -719,7 +713,7 @@ Middleware enforces additional guardrails on Vault registration: for example, ve
 
 Importantly, parameter changes only take effect at era boundaries, ensuring consistent state across validators and predictable economics for programs and users alike.
 
-## 7. Glossary and Terms {#glossary}
+## 7. Glossary and Terms
 
 ### Actor Model
 

@@ -1,12 +1,11 @@
 ---
 title: Security and Validator Selection
-sidebar_position: 3
 ---
 
 Regardless of the integration approach, validators are critical to Vara.eth's operation. Their selection and management
 are governed by a decentralized re-staking mechanism facilitated by the [Symbiotic Protocol](https://symbiotic.fi/).
 This process ensures that Vara.eth maintains a secure and scalable compute network by dynamically managing the set of
-validators (operated by network participants called **[operators](/docs/glossary.md#operator)**) responsible for program execution.
+validators (operated by network participants called **[operators](/docs/glossary#operator)**) responsible for program execution.
 
 Symbiotic Protocol provides the infrastructure for this election process, serving as an exchange hub for three primary
 stakeholders: **stakers**, **operators**, and the Vara.eth **network** itself. Together, these actors create a robust
@@ -16,10 +15,10 @@ and decentralized validator selection mechanism tailored specifically to Vara.et
 
 Vara.eth is designed with two complementary security modes that applications can choose based on their needs:
 
-**Liquid Restaking-Powered PoS**  
+**Liquid Restaking-Powered PoS**
 Enables security for internal Vara.eth consensus while reducing overhead in many cases, leveraging VARA token staking and delegation for efficient validation. This mode is detailed throughout this section.
 
-**ZK-Verified Mode**  
+**ZK-Verified Mode**
 Uses zero-knowledge proofs to maintain full Ethereum-equivalent security, ensuring every computation is cryptographically verified on mainnet. This mode provides the highest level of security guarantees for applications requiring trustless verification.
 
 Both modes run on decentralized, permissionless infrastructure using consumer-grade hardware. This dual approach links the economic security of Vara Network with Ethereum while giving developers flexibility in security-performance trade-offs.
@@ -35,9 +34,9 @@ The list of active validators is continuously updated and pushed to the Router C
 Key elements of the selection process include:
 
 1. Stake Allocation: Vara.eth establishes operator sets, defines staking requirements, and locks stake amounts for
-   predefined epochs to maintain network stability.
+predefined epochs to maintain network stability.
 2. Symbiotic Vault Integration: Vaults manage the staking process, allocate collateral to operators, and enforce
-   strategies specific to Vara.eth's execution needs.
+strategies specific to Vara.eth's execution needs.
 
 ### Key Actors in Vara.eth Validator Selection
 

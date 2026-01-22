@@ -1,9 +1,7 @@
 ---
 title: Vara.eth
-sidebar_position: 3
+description: Revolutionizing Ethereum
 ---
-
-# Vara.eth: Revolutionizing Ethereum
 
 ## Why Ethereum Needs Vara.eth
 
@@ -15,8 +13,13 @@ The network's inability to process transactions in parallel, its slow finality t
 
 The root of these challenges lies in Ethereum's single-threaded architecture. The lack of parallel processing limits the network's computational throughput, making it difficult to handle complex or resource-intensive operations. Block confirmation time about 12 seconds introduces sensitive delays to user interactions. Finality times, averaging around 13 minutes, intensify the problem. While transactions in a block are usable after one block confirmation, applications requiring high security typically wait for finalization to ensure immutability. High gas fees (i.e expensive computations) further deter adoption, particularly for applications that require frequent or intensive computations.
 
-![Ethereum network](/img/eth-net.jpg)
-_Ethereum Layer-1 Network: Basic Workflow_
+<figure>
+    ![Ethereum network](/img/eth-net.jpg)
+
+    <figcaption>
+        Ethereum Layer-1 Network: Basic Workflow
+    </figcaption>
+</figure>
 
 Rollups have attempted to address scalability, but while solving one problem, they create another. Rather than unifying Ethereum's ecosystem, rollups fragment it—operating as isolated chains where communication and composability can be more complex than cross-chain bridges. Each rollup introduces its own set of trust assumptions, sequencer dependencies, and bridging mechanisms, further splintering liquidity and developer attention across disconnected ecosystems. Security concerns and centralization risks remain largely unresolved, and the proliferation of rollups only deepens Ethereum's fragmentation problem instead of solving it.
 
@@ -24,19 +27,19 @@ Layer-2 solutions such as Optimistic Rollups, ZK Rollups, and Based Rollups have
 offloading transaction processing from the Ethereum main chain. However, while they improve scalability, they introduce
 trade-offs that limit their effectiveness in certain scenarios.
 
-[Optimistic Rollups](/docs/glossary.md#optimistic-rollups) rely on a lengthy challenge period for security, delaying
-transaction finalization from
-a [few hours to several days](https://ethereum.org/en/developers/docs/scaling/optimistic-rollups/#l1-l2-interoperability),
-depending on the specific rollup implementation.
+[Optimistic Rollups](/docs/glossary#optimistic-rollups) rely on a lengthy challenge period for security, delaying transaction finalization from a [few hours to several days](https://ethereum.org/en/developers/docs/scaling/optimistic-rollups/#l1-l2-interoperability), depending on the specific rollup implementation.
 
-[ZK Rollups](/docs/glossary.md#zk-rollups-zero-knowledge-rollups), while faster, impose significant computational
-overhead due to the resource-intensive nature of proof generation that includes a combination of complex cryptographic
-operations, large circuit sizes, and the need for rigorous guarantees of correctness and privacy.
+[ZK Rollups](/docs/glossary#zk-rollups-zero-knowledge-rollups), while faster, impose significant computational overhead due to the resource-intensive nature of proof generation that includes a combination of complex cryptographic operations, large circuit sizes, and the need for rigorous guarantees of correctness and privacy.
 
 Both approaches often operate in isolated environments, fragmenting liquidity and complicating interoperability.
 
-![Ethereum rollups](/img/eth-rollups.jpg)
-_Interaction of L2 Networks with Ethereum L1: Basic Workflow_
+<figure>
+    ![Ethereum rollups](/img/eth-rollups.jpg)
+
+    <figcaption>
+        Interaction of L2 Networks with Ethereum L1: Basic Workflow
+    </figcaption>
+</figure>
 
 In 2023, Based rollups were proposed as an alternative, leveraging Ethereum's Layer-1 protocols for sequencing and
 decentralization. While these rollups reduce reliance on token-based mechanisms and simplify certain operations, they

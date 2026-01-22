@@ -1,13 +1,7 @@
 ---
 title: Key Features and Advantages
-sidebar_position: 4
+description: Vara.eth offers a suite of features that address the scalability and usability challenges faced by existing blockchain solutions. These features are designed to empower developers and enhance the user experience, making Vara.eth a powerful tool for modern dApp development.
 ---
-
-# Key Features and Advantages
-
-Vara.eth offers a suite of features that address the scalability and usability challenges faced by existing blockchain
-solutions. These features are designed to empower developers and enhance the user experience, making Vara.eth a powerful
-tool for modern dApp development.
 
 ## Seamless Integration with Ethereum
 
@@ -49,10 +43,8 @@ _Gas Fees and Reverse Gas Model_
 
 In Vara.eth, programs maintain two types of balances:
 
-- Executable Balance: Dedicated solely to program execution. If this balance is depleted, the program cannot process new
-  messages until replenished.
-- Free Balance: Acts as a general-purpose wallet for funds earned by the program, which can be withdrawn or converted
-  into Executable Balance if supported by the program logic.
+- Executable Balance: Dedicated solely to program execution. If this balance is depleted, the program cannot process new messages until replenished.
+- Free Balance: Acts as a general-purpose wallet for funds earned by the program, which can be withdrawn or converted into Executable Balance if supported by the program logic.
 
 This model allows anyone to send messages without incurring extra compute costs beyond the base Ethereum transaction fee.
 The Executable Balance is consumed during execution, while funds are distributed to
@@ -66,7 +58,7 @@ and real-time responsiveness, such as financial services, gaming platforms, and 
 ## Real-Time Computation Result and Pre-confirmations
 
 For latency-sensitive applications, Vara.eth introduces its own technical implementation of
-a [well-known](https://ethresear.ch/t/based-preconfirmations/17353) [pre-confirmation mechanism](/docs/glossary.md#pre-confirmation-mechanism).
+a [well-known](https://ethresear.ch/t/based-preconfirmations/17353) [pre-confirmation mechanism](/docs/glossary#pre-confirmation-mechanism).
 This feature allows developers to access computation results immediately after execution, even before the transaction is
 finalized on-chain. Modern consensus techniques enable sub-second pre-confirmations validated by Vara.eth operators, with final settlement anchored on Ethereum. By bridging the gap between decentralized security and Web2-like responsiveness, this capability enables the development of cutting-edge applications in finance, competitive gaming, and other industries. Pre-confirmations provide early results for UX, while canonical finality still follows Ethereum's finality rules.
 
