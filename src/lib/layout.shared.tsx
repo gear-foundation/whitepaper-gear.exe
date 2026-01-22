@@ -1,9 +1,11 @@
 import type {BaseLayoutProps} from "fumadocs-ui/layouts/shared";
+import {NavLogo} from "@/components/common/nav-logo";
 
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      title: "Whitepaper",
+      url: "https://eth.vara.network",
+      title: <NavLogo/>,
     },
     githubUrl: "https://github.com/gear-tech/gear/tree/master/ethexe",
     links: [
