@@ -23,9 +23,9 @@ jobs:
           path: target
           fetch-depth: 0
 
-      - name: Clean and sync docs and static to target repo
+      - name: Clean and sync docs and public to target repo
         run: |
-          # Sync contents of docs/ → target/content/whitepaper/
+          # Sync contents of content/docs/ → target/content/whitepaper/
           DOCS_DEST="target/content/whitepaper"
           rm -rf "$DOCS_DEST"
           mkdir -p "$DOCS_DEST"
