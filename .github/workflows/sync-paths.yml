@@ -29,7 +29,7 @@ jobs:
           DOCS_DEST="target/content/whitepaper"
           rm -rf "$DOCS_DEST"
           mkdir -p "$DOCS_DEST"
-          rsync -av docs/ "$DOCS_DEST/"
+          rsync -av content/docs/ "$DOCS_DEST/"
 
           # Sync contents of public/ → target/public/whitepaper/
           STATIC_DEST="target/public/whitepaper"
