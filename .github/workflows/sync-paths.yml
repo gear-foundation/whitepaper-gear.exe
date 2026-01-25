@@ -35,7 +35,7 @@ jobs:
           STATIC_DEST="target/public/whitepaper"
           rm -rf "$STATIC_DEST"
           mkdir -p "$STATIC_DEST"
-          rsync -av static/ "$STATIC_DEST/"
+          rsync -av public/ "$STATIC_DEST/"
 
       - name: Commit and push changes
         working-directory: target
